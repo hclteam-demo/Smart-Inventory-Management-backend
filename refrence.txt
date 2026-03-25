@@ -1,0 +1,54 @@
+problem stmt
+
+# 1. Smart Inventory Management System
+
+### Problem Statement
+
+Small and mid-scale businesses struggle to track inventory in real-time, leading to stockouts or overstocking. Manual tracking systems are error-prone and lack predictive insights.
+
+### Objective
+
+Design a backend system that manages product inventory, tracks stock levels, and triggers alerts for low stock.
+
+### Scope
+
+* Manage products and categories
+* Track stock updates (add/remove)
+* Alert when stock goes below threshold
+* Maintain inventory history
+
+
+
+Product
+- id : Long (PK)
+- name : String
+- description : String
+- price : Double
+- quantity : Integer
+- threshold : Integer   // minimum stock level
+- categoryId : Long (FK)
+- createdAt : LocalDateTime
+- updatedAt : LocalDateTime
+
+Category
+- id : Long (PK)
+- name : String
+- description : String
+
+InventoryTransaction
+- id : Long (PK)
+- productId : Long (FK)
+- type : String  // ADD / REMOVE
+- quantity : Integer
+- date : LocalDateTime
+- remarks : String
+
+StockAlert
+- id : Long (PK)
+- productId : Long (FK)
+- currentQuantity : Integer
+- threshold : Integer
+- alertMessage : String
+- createdAt : LocalDateTime
+- status : String // ACTIVE / RESOLVED
+
