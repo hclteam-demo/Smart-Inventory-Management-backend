@@ -4,6 +4,17 @@ CREATE TABLE IF NOT EXISTS categories (
     description VARCHAR(500)
 );
 
+CREATE TABLE IF NOT EXISTS users (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(120) NOT NULL,
+    email VARCHAR(180) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) NOT NULL,
+    created_at DATETIME NOT NULL,
+    CONSTRAINT chk_users_role
+        CHECK (role IN ('MANAGER', 'ADMIN', 'STAFF'))
+);
+
 CREATE TABLE IF NOT EXISTS products (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(150) NOT NULL,
